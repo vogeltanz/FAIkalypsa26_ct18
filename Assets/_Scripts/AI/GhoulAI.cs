@@ -8,9 +8,15 @@ public class GhoulAI : MonoBehaviour
     [SerializeField]
     float detectionRange = 10f;
 
+    [SerializeField]
+    GameObject player;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
+
+        var ghoulRunStateMachine = animator.GetBehaviour<GhoulRunStateMachine>();
+        ghoulRunStateMachine.Player = player;
     }
 
     public void CheckPlayerVisibility(GameObject player)
